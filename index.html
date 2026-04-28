@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Takeadan 的个人主页博客，记录技术、产品、创作与生活观察。"
+    />
+    <meta name="theme-color" content="#08111f" />
+    <title>Takeadan | Personal Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <canvas id="motion-canvas" aria-hidden="true"></canvas>
+    <div class="cursor-orbit" aria-hidden="true"></div>
+
+    <header class="site-header" data-reveal>
+      <a class="brand" href="#top" aria-label="Takeadan 首页">
+        <span class="brand-mark">T</span>
+        <span>Takeadan</span>
+      </a>
+      <nav class="site-nav" aria-label="主要导航">
+        <a href="#writing">文章</a>
+        <a href="#projects">项目</a>
+        <a href="#about">关于</a>
+        <a href="#contact">联系</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero section-panel" aria-labelledby="hero-title">
+        <div class="hero-copy" data-reveal>
+          <p class="eyebrow">个人主页 / 创作实验场</p>
+          <h1 id="hero-title">Takeadan 的主页博客</h1>
+          <p class="hero-lede">
+            把技术探索、产品直觉和生活里的灵感做成可回看的轨迹。这里像一间持续刷新的工作室，记录我正在思考和打磨的东西。
+          </p>
+          <div class="hero-actions" aria-label="快速入口">
+            <a class="button primary magnetic" href="#writing">查看文章</a>
+            <a class="button ghost magnetic" href="#projects">浏览项目</a>
+          </div>
+        </div>
+
+        <div class="hero-stage" data-reveal>
+          <div class="signal-card depth-1">
+            <span class="card-kicker">Now Building</span>
+            <strong>Interactive Blog System</strong>
+            <p>流畅动效、实时反馈、适合长期迭代的个人内容中枢。</p>
+            <div class="mini-chart" aria-hidden="true">
+              <span style="--level: 54%"></span>
+              <span style="--level: 76%"></span>
+              <span style="--level: 43%"></span>
+              <span style="--level: 88%"></span>
+              <span style="--level: 64%"></span>
+            </div>
+          </div>
+          <div class="signal-card depth-2">
+            <span class="card-kicker">Focus</span>
+            <strong>Code · Product · Notes</strong>
+            <p>用清晰的文章和可感知的界面，把复杂想法讲得更容易进入。</p>
+          </div>
+          <div class="floating-chip chip-a">Design</div>
+          <div class="floating-chip chip-b">Systems</div>
+          <div class="floating-chip chip-c">Motion</div>
+        </div>
+      </section>
+
+      <section class="ticker" aria-label="状态更新" data-reveal>
+        <div class="ticker-track">
+          <span>Latest notes</span>
+          <span>Frontend craft</span>
+          <span>Game-feel motion</span>
+          <span>Product thinking</span>
+          <span>Writing in public</span>
+          <span>Latest notes</span>
+          <span>Frontend craft</span>
+          <span>Game-feel motion</span>
+          <span>Product thinking</span>
+          <span>Writing in public</span>
+        </div>
+      </section>
+
+      <section id="writing" class="content-section" aria-labelledby="writing-title">
+        <div class="section-heading" data-reveal>
+          <p class="eyebrow">Writing</p>
+          <h2 id="writing-title">近期文章</h2>
+          <p>以短笔记和长文并行的方式，沉淀技术实践、设计观察和阶段性复盘。</p>
+        </div>
+        <div class="post-grid">
+          <article class="post-card magnetic" data-reveal>
+            <div class="post-meta">
+              <time datetime="2026-04-28">2026.04.28</time>
+              <span>Frontend</span>
+            </div>
+            <h3>如何把网页动画做出“游戏手感”</h3>
+            <p>从帧循环、缓动曲线、视差层和输入反馈开始，让页面不只是动，而是有响应、有重量。</p>
+            <a href="#" aria-label="阅读：如何把网页动画做出游戏手感">Read</a>
+          </article>
+          <article class="post-card magnetic" data-reveal>
+            <div class="post-meta">
+              <time datetime="2026-04-20">2026.04.20</time>
+              <span>Product</span>
+            </div>
+            <h3>个人主页不是名片，是可生长的界面</h3>
+            <p>主页应该帮助访问者快速理解你，也帮助自己持续整理方向、作品和判断。</p>
+            <a href="#" aria-label="阅读：个人主页不是名片，是可生长的界面">Read</a>
+          </article>
+          <article class="post-card magnetic" data-reveal>
+            <div class="post-meta">
+              <time datetime="2026-04-12">2026.04.12</time>
+              <span>Notes</span>
+            </div>
+            <h3>把灵感从碎片变成作品</h3>
+            <p>记录、归档、重组，再通过一次次发布形成反馈，创作系统会自己长出节奏。</p>
+            <a href="#" aria-label="阅读：把灵感从碎片变成作品">Read</a>
+          </article>
+        </div>
+      </section>
+
+      <section id="projects" class="content-section split-section" aria-labelledby="projects-title">
+        <div class="section-heading" data-reveal>
+          <p class="eyebrow">Projects</p>
+          <h2 id="projects-title">正在打磨</h2>
+          <p>选一些适合公开展示的项目，展示思路、过程和结果。</p>
+        </div>
+        <div class="project-list">
+          <article class="project-row magnetic" data-reveal>
+            <span>01</span>
+            <div>
+              <h3>Motion Blog</h3>
+              <p>一个强调刷新感、层次感和阅读节奏的个人博客界面。</p>
+            </div>
+            <strong>Live</strong>
+          </article>
+          <article class="project-row magnetic" data-reveal>
+            <span>02</span>
+            <div>
+              <h3>Idea Archive</h3>
+              <p>把日常想法整理为可搜索、可引用、可延展的知识库。</p>
+            </div>
+            <strong>Draft</strong>
+          </article>
+          <article class="project-row magnetic" data-reveal>
+            <span>03</span>
+            <div>
+              <h3>Design Lab</h3>
+              <p>用小型交互实验验证视觉节奏、动效反馈和信息密度。</p>
+            </div>
+            <strong>Build</strong>
+          </article>
+        </div>
+      </section>
+
+      <section id="about" class="content-section about-section" aria-labelledby="about-title">
+        <div class="portrait-panel" data-reveal aria-hidden="true">
+          <div class="portrait-core">TA</div>
+          <span class="orbit-line"></span>
+          <span class="orbit-line second"></span>
+        </div>
+        <div class="about-copy" data-reveal>
+          <p class="eyebrow">About</p>
+          <h2 id="about-title">你好，我是 Takeadan。</h2>
+          <p>
+            我喜欢把想法做成能被体验的东西：一篇文章、一个界面、一个工具，或者一段能说明判断的过程。
+            这个站点会持续更新，用来展示作品、记录学习，也保存那些暂时还说不清但值得继续追的线索。
+          </p>
+          <dl class="stats">
+            <div>
+              <dt>03</dt>
+              <dd>内容方向</dd>
+            </div>
+            <div>
+              <dt>60fps</dt>
+              <dd>动效目标</dd>
+            </div>
+            <div>
+              <dt>∞</dt>
+              <dd>持续迭代</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <section id="contact" class="content-section contact-section" aria-labelledby="contact-title">
+        <div data-reveal>
+          <p class="eyebrow">Contact</p>
+          <h2 id="contact-title">一起把想法往前推。</h2>
+          <p>如果你想交流技术、产品、设计或创作，可以从 GitHub 开始找到我。</p>
+        </div>
+        <a class="button primary magnetic" href="https://github.com/takeadan" rel="noreferrer" target="_blank">
+          GitHub
+        </a>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>© 2026 Takeadan</span>
+      <a href="#top">回到顶部</a>
+    </footer>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
