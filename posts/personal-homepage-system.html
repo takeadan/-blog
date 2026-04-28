@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="个人主页应该帮助访问者理解你，也帮助自己持续整理方向、作品和判断。" />
+    <meta name="theme-color" content="#f5fbff" />
+    <title>个人主页不是名片，是可生长的界面 | Takeadan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body class="post-page">
+    <canvas id="motion-canvas" aria-hidden="true"></canvas>
+    <div class="cursor-orbit" aria-hidden="true"></div>
+
+    <header class="site-header post-header" data-reveal>
+      <a class="brand" href="../index.html#top" aria-label="Takeadan 首页">
+        <span class="brand-mark">T</span>
+        <span>Takeadan</span>
+      </a>
+      <nav class="site-nav" aria-label="文章导航">
+        <a href="../index.html#writing">文章</a>
+        <a href="../index.html#projects">项目</a>
+        <a href="../index.html#about">关于</a>
+      </nav>
+    </header>
+
+    <main class="article-shell">
+      <a class="back-link magnetic" href="../index.html#writing">返回首页</a>
+      <article class="article-card" data-reveal>
+        <header class="article-hero">
+          <p class="eyebrow">Product</p>
+          <h1>个人主页不是名片，是可生长的界面</h1>
+          <div class="article-meta">
+            <time datetime="2026-04-20">2026.04.20</time>
+            <span>预计阅读 4 分钟</span>
+          </div>
+          <p class="article-summary">
+            一个长期维护的主页，应该像内容和作品的入口，而不只是静态介绍。
+          </p>
+        </header>
+
+        <div class="article-content">
+          <h2>它应该解释你正在做什么</h2>
+          <p>
+            名片只说明身份，主页可以说明方向。访问者应该能快速知道你关注什么、做过什么、接下来想探索什么。
+          </p>
+
+          <h2>它也应该帮助你整理自己</h2>
+          <p>
+            当主页被持续更新，它会变成一个外化的思考系统。文章、项目、笔记和链接，会慢慢形成自己的脉络。
+          </p>
+
+          <blockquote>
+            主页不是一次性工程，而是你和世界保持连接的一块工作台。
+          </blockquote>
+        </div>
+      </article>
+    </main>
+
+    <script src="../script.js"></script>
+  </body>
+</html>

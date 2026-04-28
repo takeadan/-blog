@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="从帧循环、缓动曲线、视差层和输入反馈开始，让页面动效更有响应和重量。" />
+    <meta name="theme-color" content="#f5fbff" />
+    <title>如何把网页动画做出游戏手感 | Takeadan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body class="post-page">
+    <canvas id="motion-canvas" aria-hidden="true"></canvas>
+    <div class="cursor-orbit" aria-hidden="true"></div>
+
+    <header class="site-header post-header" data-reveal>
+      <a class="brand" href="../index.html#top" aria-label="Takeadan 首页">
+        <span class="brand-mark">T</span>
+        <span>Takeadan</span>
+      </a>
+      <nav class="site-nav" aria-label="文章导航">
+        <a href="../index.html#writing">文章</a>
+        <a href="../index.html#projects">项目</a>
+        <a href="../index.html#about">关于</a>
+      </nav>
+    </header>
+
+    <main class="article-shell">
+      <a class="back-link magnetic" href="../index.html#writing">返回首页</a>
+      <article class="article-card" data-reveal>
+        <header class="article-hero">
+          <p class="eyebrow">Frontend</p>
+          <h1>如何把网页动画做出“游戏手感”</h1>
+          <div class="article-meta">
+            <time datetime="2026-04-28">2026.04.28</time>
+            <span>预计阅读 5 分钟</span>
+          </div>
+          <p class="article-summary">
+            动画的关键不只是“动起来”，而是让用户感到界面在回应自己。
+          </p>
+        </header>
+
+        <div class="article-content">
+          <h2>先让输入有重量</h2>
+          <p>
+            游戏手感来自连续反馈。鼠标移动、点击、滚动、页面切换，都应该让人感到界面有惯性、有延迟、有缓冲，而不是突然跳变。
+          </p>
+          <p>
+            在网页里，可以用缓动曲线、微小位移、透明度变化和层级错位，制造“被推动”的感觉。幅度不需要大，关键是稳定和一致。
+          </p>
+
+          <h2>层次比速度更重要</h2>
+          <p>
+            背景、内容、按钮和卡片应该处在不同的运动层。背景慢一点，内容轻一点，交互元素更敏感一点，页面才会有深度。
+          </p>
+
+          <blockquote>
+            好的动效不是抢注意力，而是让注意力更自然地流向下一步。
+          </blockquote>
+        </div>
+      </article>
+    </main>
+
+    <script src="../script.js"></script>
+  </body>
+</html>

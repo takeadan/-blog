@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="文章摘要写在这里。" />
+    <meta name="theme-color" content="#f5fbff" />
+    <title>文章标题 | Takeadan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body class="post-page">
+    <canvas id="motion-canvas" aria-hidden="true"></canvas>
+    <div class="cursor-orbit" aria-hidden="true"></div>
+
+    <header class="site-header post-header" data-reveal>
+      <a class="brand" href="../index.html#top" aria-label="Takeadan 首页">
+        <span class="brand-mark">T</span>
+        <span>Takeadan</span>
+      </a>
+      <nav class="site-nav" aria-label="文章导航">
+        <a href="../index.html#writing">文章</a>
+        <a href="../index.html#projects">项目</a>
+        <a href="../index.html#about">关于</a>
+      </nav>
+    </header>
+
+    <main class="article-shell">
+      <a class="back-link magnetic" href="../index.html#writing">返回首页</a>
+      <article class="article-card" data-reveal>
+        <header class="article-hero">
+          <p class="eyebrow">分类名称</p>
+          <h1>文章标题写在这里</h1>
+          <div class="article-meta">
+            <time datetime="2026-04-28">2026.04.28</time>
+            <span>预计阅读 5 分钟</span>
+          </div>
+          <p class="article-summary">
+            这里写一句文章摘要，用来快速说明这篇文章讲什么。
+          </p>
+        </header>
+
+        <div class="article-content">
+          <h2>第一节标题</h2>
+          <p>
+            从这里开始写正文。复制这个模板文件，改文件名、标题、日期、摘要和正文，然后在首页文章卡片里把链接指向新文件。
+          </p>
+
+          <h2>第二节标题</h2>
+          <p>
+            每一段正文直接写在 p 标签里。如果需要列表，可以使用 ul 和 li；如果需要引用，可以使用 blockquote。
+          </p>
+
+          <blockquote>
+            这里可以放一句你想强调的话。
+          </blockquote>
+        </div>
+      </article>
+    </main>
+
+    <script src="../script.js"></script>
+  </body>
+</html>
