@@ -93,8 +93,23 @@
           <h2 id="writing-title">近期文章</h2>
           <p>以短笔记和长文并行的方式，沉淀技术实践、设计观察和阶段性复盘。</p>
         </div>
-        <div class="post-grid">
-          <article class="post-card magnetic" data-reveal>
+        <div class="post-stack-shell" data-reveal>
+          <div class="stack-control" aria-label="文章切换">
+            <button class="stack-dot is-active" type="button" data-stack-target="0">
+              <span>01</span>
+              <strong>游戏手感</strong>
+            </button>
+            <button class="stack-dot" type="button" data-stack-target="1">
+              <span>02</span>
+              <strong>主页系统</strong>
+            </button>
+            <button class="stack-dot" type="button" data-stack-target="2">
+              <span>03</span>
+              <strong>创作节奏</strong>
+            </button>
+          </div>
+          <div class="post-stack" data-stack>
+            <article class="post-card magnetic is-active" data-stack-card data-reveal>
             <div class="post-meta">
               <time datetime="2026-04-28">2026.04.28</time>
               <span>Frontend</span>
@@ -103,7 +118,7 @@
             <p>从帧循环、缓动曲线、视差层和输入反馈开始，让页面不只是动，而是有响应、有重量。</p>
             <a href="#" aria-label="阅读：如何把网页动画做出游戏手感">Read</a>
           </article>
-          <article class="post-card magnetic" data-reveal>
+            <article class="post-card magnetic" data-stack-card data-reveal>
             <div class="post-meta">
               <time datetime="2026-04-20">2026.04.20</time>
               <span>Product</span>
@@ -112,7 +127,7 @@
             <p>主页应该帮助访问者快速理解你，也帮助自己持续整理方向、作品和判断。</p>
             <a href="#" aria-label="阅读：个人主页不是名片，是可生长的界面">Read</a>
           </article>
-          <article class="post-card magnetic" data-reveal>
+            <article class="post-card magnetic" data-stack-card data-reveal>
             <div class="post-meta">
               <time datetime="2026-04-12">2026.04.12</time>
               <span>Notes</span>
@@ -121,6 +136,7 @@
             <p>记录、归档、重组，再通过一次次发布形成反馈，创作系统会自己长出节奏。</p>
             <a href="#" aria-label="阅读：把灵感从碎片变成作品">Read</a>
           </article>
+          </div>
         </div>
       </section>
 

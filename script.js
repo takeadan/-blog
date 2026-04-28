@@ -3,12 +3,12 @@ const ctx = canvas.getContext("2d", { alpha: true });
 const cursor = document.querySelector(".cursor-orbit");
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const motionTuning = {
-  drift: 0.032,
-  idlePull: 0.00006,
-  activePull: 0.00026,
-  pointerEase: 0.075,
-  pulseSpeed: 0.00072,
-  ringSpeed: 0.00085,
+  drift: 0.012,
+  idlePull: 0.000018,
+  activePull: 0.00009,
+  pointerEase: 0.045,
+  pulseSpeed: 0.00028,
+  ringSpeed: 0.00032,
 };
 
 const pointer = {
@@ -39,14 +39,14 @@ function resizeCanvas() {
 }
 
 function seedNodes() {
-  const count = Math.round(Math.min(92, Math.max(42, width / 18)));
+  const count = Math.round(Math.min(64, Math.max(30, width / 26)));
   nodes = Array.from({ length: count }, (_, index) => {
     const layer = index % 3;
     return {
       x: Math.random() * width,
       y: Math.random() * height,
-      vx: (Math.random() - 0.5) * (0.12 + layer * 0.06),
-      vy: (Math.random() - 0.5) * (0.11 + layer * 0.05),
+      vx: (Math.random() - 0.5) * (0.06 + layer * 0.03),
+      vy: (Math.random() - 0.5) * (0.055 + layer * 0.025),
       r: 1.2 + Math.random() * (2.2 + layer),
       layer,
       hue: [160, 194, 328][layer],
@@ -58,21 +58,21 @@ function seedNodes() {
 function drawGrid(scrollShift) {
   const spacing = 54;
   ctx.save();
-  ctx.globalAlpha = 0.14;
-  ctx.strokeStyle = "rgba(170, 224, 255, 0.22)";
+  ctx.globalAlpha = 0.18;
+  ctx.strokeStyle = "rgba(54, 120, 146, 0.18)";
   ctx.lineWidth = 1;
 
-  for (let x = (scrollShift * 0.055) % spacing; x < width; x += spacing) {
+  for (let x = (scrollShift * 0.018) % spacing; x < width; x += spacing) {
     ctx.beginPath();
     ctx.moveTo(x, 0);
-    ctx.lineTo(x + scrollShift * 0.018, height);
+    ctx.lineTo(x + scrollShift * 0.006, height);
     ctx.stroke();
   }
 
-  for (let y = (scrollShift * 0.045) % spacing; y < height; y += spacing) {
+  for (let y = (scrollShift * 0.014) % spacing; y < height; y += spacing) {
     ctx.beginPath();
     ctx.moveTo(0, y);
-    ctx.lineTo(width, y + scrollShift * 0.014);
+    ctx.lineTo(width, y + scrollShift * 0.005);
     ctx.stroke();
   }
 
@@ -96,10 +96,10 @@ function drawNodes(delta, time, scrollShift) {
     if (node.y < -60) node.y = height + 60;
     if (node.y > height + 60) node.y = -60;
 
-    const pulse = Math.sin(time * motionTuning.pulseSpeed + node.phase) * 0.36 + 0.58;
+    const pulse = Math.sin(time * motionTuning.pulseSpeed + node.phase) * 0.28 + 0.58;
     ctx.beginPath();
-    ctx.fillStyle = `hsla(${node.hue}, 92%, 68%, ${0.18 + pulse * 0.2})`;
-    ctx.arc(node.x, node.y + scrollShift * (0.005 + node.layer * 0.0025), node.r + pulse * 0.82, 0, Math.PI * 2);
+    ctx.fillStyle = `hsla(${node.hue}, 76%, 48%, ${0.11 + pulse * 0.14})`;
+    ctx.arc(node.x, node.y + scrollShift * (0.002 + node.layer * 0.001), node.r + pulse * 0.6, 0, Math.PI * 2);
     ctx.fill();
   }
 
@@ -114,7 +114,7 @@ function drawNodes(delta, time, scrollShift) {
 
       if (dist < limit) {
         ctx.beginPath();
-        ctx.strokeStyle = `rgba(138, 224, 255, ${0.13 * (1 - dist / limit)})`;
+        ctx.strokeStyle = `rgba(46, 116, 151, ${0.075 * (1 - dist / limit)})`;
         ctx.lineWidth = 1;
         ctx.moveTo(a.x, a.y);
         ctx.lineTo(b.x, b.y);
@@ -128,9 +128,9 @@ function drawEnergyRings(time) {
   const x = pointer.x;
   const y = pointer.y;
   for (let i = 0; i < 3; i += 1) {
-    const radius = 58 + i * 38 + Math.sin(time * motionTuning.ringSpeed + i) * 5;
+    const radius = 58 + i * 38 + Math.sin(time * motionTuning.ringSpeed + i) * 3;
     ctx.beginPath();
-    ctx.strokeStyle = `rgba(${i === 0 ? "102, 227, 180" : i === 1 ? "108, 215, 255" : "255, 111, 174"}, ${0.16 - i * 0.035})`;
+    ctx.strokeStyle = `rgba(${i === 0 ? "12, 166, 126" : i === 1 ? "22, 142, 193" : "223, 106, 165"}, ${0.08 - i * 0.018})`;
     ctx.lineWidth = 1.2;
     ctx.arc(x, y, radius, 0, Math.PI * 2);
     ctx.stroke();
@@ -172,7 +172,70 @@ function setupReveal() {
       : Math.min(index * 42, 220);
     element.style.transitionDelay = `${layeredDelay}ms`;
     observer.observe(element);
+    if (element.getBoundingClientRect().top < window.innerHeight * 0.96) {
+      element.classList.add("is-visible");
+    }
   });
+}
+
+function setupStackedCards() {
+  const cards = [...document.querySelectorAll("[data-stack-card]")];
+  const dots = [...document.querySelectorAll("[data-stack-target]")];
+  const shell = document.querySelector(".post-stack-shell");
+  if (!cards.length || !shell) return;
+
+  let activeIndex = 0;
+  let wheelLock = false;
+
+  function setActive(index) {
+    activeIndex = Math.max(0, Math.min(cards.length - 1, index));
+    cards.forEach((card, cardIndex) => {
+      card.classList.toggle("is-active", cardIndex === activeIndex);
+      const offset = cardIndex - activeIndex;
+      const state = offset === 0 ? "active" : offset === 1 ? "next" : offset > 1 ? "far" : "behind";
+      card.dataset.stackState = state;
+      card.style.setProperty("--stack-order", Math.abs(offset));
+    });
+    dots.forEach((dot, dotIndex) => {
+      dot.classList.toggle("is-active", dotIndex === activeIndex);
+    });
+  }
+
+  dots.forEach((dot) => {
+    dot.addEventListener("click", () => {
+      setActive(Number(dot.dataset.stackTarget || 0));
+    });
+  });
+
+  shell.addEventListener(
+    "wheel",
+    (event) => {
+      if (Math.abs(event.deltaY) < 28 || wheelLock) return;
+      const nextIndex = activeIndex + (event.deltaY > 0 ? 1 : -1);
+      if (nextIndex < 0 || nextIndex >= cards.length) return;
+      setActive(nextIndex);
+      wheelLock = true;
+      window.setTimeout(() => {
+        wheelLock = false;
+      }, 520);
+    },
+    { passive: true },
+  );
+
+  window.addEventListener(
+    "scroll",
+    () => {
+      const rect = shell.getBoundingClientRect();
+      const travel = window.innerHeight + rect.height;
+      const progress = (window.innerHeight - rect.top) / travel;
+      if (progress > 0.18 && progress < 0.88) {
+        setActive(Math.min(cards.length - 1, Math.floor(progress * cards.length)));
+      }
+    },
+    { passive: true },
+  );
+
+  setActive(0);
 }
 
 function setupMagnetics() {
@@ -208,6 +271,7 @@ function setupCursor() {
 window.addEventListener("resize", resizeCanvas, { passive: true });
 resizeCanvas();
 setupReveal();
+setupStackedCards();
 
 if (!prefersReducedMotion) {
   setupMagnetics();
